@@ -7,3 +7,4 @@ resources:
 
 # Changes the name prefix just for dev (e.g., dev-guestbook-ui)
 namePrefix: dev-
+namespace: upskilling-dev

@@ -6,7 +6,7 @@ resources:
   - ../../base
 
 namePrefix: prod-
-
+namespace: upskilling-prod
 # We will apply a patch to change the replica count just for Production
 patches:
   - target:
