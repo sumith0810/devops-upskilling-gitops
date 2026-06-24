@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Points back to the core base deployment we made earlier
+resources:
+  - ../../base
+
+# Changes the name prefix just for dev (e.g., dev-guestbook-ui)
+namePrefix: dev-
