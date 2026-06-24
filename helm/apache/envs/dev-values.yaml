@@ -1,15 +1,9 @@
-# Required by Bitnami charts to allow non-DockerHub custom image mirrors
-global:
-  security:
-    allowInsecureImages: true
-
-# Using the standard Docker Official Image Mirror for Apache on AWS ECR Public
-image:
-  registry: public.ecr.aws
-  repository: docker/library/httpd
-  tag: alpine
-
+# Simplified parameters for a standard generic web deployment
 replicaCount: 1
+
+image:
+  repository: public.ecr.aws/docker/library/nginx
+  tag: alpine
 
 service:
   type: ClusterIP

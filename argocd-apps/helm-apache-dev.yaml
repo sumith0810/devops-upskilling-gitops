@@ -6,13 +6,13 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: 'https://charts.bitnami.com/bitnami' # The upstream public Helm registry
-      chart: apache
-      targetRevision: 11.x.x # The version of the Helm chart package
+    - repoURL: 'https://stefanprodan.github.io/podinfo' # A clean, generic test chart registry
+      chart: podinfo
+      targetRevision: 6.x.x
       helm:
         valueFiles:
-          - $values/helm/apache/envs/dev-values.yaml # Pointing to our local overrides
-    - repoURL: 'https://github.com/sumith0810/devops-upskilling-gitops.git' # Your Git repo
+          - $values/helm/apache/envs/dev-values.yaml
+    - repoURL: 'https://github.com/sumith0810/devops-upskilling-gitops.git'
       targetRevision: HEAD
       ref: values
   destination:
