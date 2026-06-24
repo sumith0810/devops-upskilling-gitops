@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prod-guestbook
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/sumith0810/devops-upskilling-gitops.git'
+    targetRevision: HEAD
+    path: apps/guestbook/envs/prod # Pointing to the prod overlay folder
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: upskilling-prod # Target production namespace
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
