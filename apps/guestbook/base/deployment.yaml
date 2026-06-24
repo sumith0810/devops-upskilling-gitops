@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: guestbook-ui
-        image: docker.io/argoproj/guestbook:v1
+        image: nginx:alpine
         ports:
         - containerPort: 80
