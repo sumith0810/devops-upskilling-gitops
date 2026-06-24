@@ -1,13 +1,13 @@
-# Simplified parameters for a standard generic web deployment
 replicaCount: 1
 
+# Using the chart's native image hosted on GitHub Container Registry (bypasses Docker Hub blocks)
 image:
-  repository: public.ecr.aws/docker/library/nginx
-  tag: alpine
+  repository: ghcr.io/stefanprodan/podinfo
+  tag: 6.7.0
 
 service:
   type: ClusterIP
-  port: 80
+  port: 9898 # Podinfo defaults to running on port 9898
 
 resources:
   limits:
