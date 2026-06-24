@@ -1,4 +1,9 @@
-# This replaces the variables inside the upstream Helm template dynamically
+# Add this to the top of helm/apache/envs/dev-values.yaml
+image:
+  registry: docker.io
+  repository: bitnami/apache
+  tag: latest # Overrides the broken chart default with the stable latest tag
+
 replicaCount: 1
 
 service:
