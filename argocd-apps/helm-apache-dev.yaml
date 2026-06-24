@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dev-helm-apache
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: 'https://charts.bitnami.com/bitnami' # The upstream public Helm registry
+      chart: apache
+      targetRevision: 11.x.x # The version of the Helm chart package
+      helm:
+        valueFiles:
+          - $values/helm/apache/envs/dev-values.yaml # Pointing to our local overrides
+    - repoURL: 'https://github.com/sumith0810/devops-upskilling-gitops.git' # Your Git repo
+      targetRevision: HEAD
+      ref: values
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: upskilling-helm-dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
