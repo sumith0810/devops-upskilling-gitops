@@ -1,8 +1,8 @@
-# Add this to the top of helm/apache/envs/dev-values.yaml
+# Overriding the upstream chart's container details to point to an explicit image mirror
 image:
-  registry: docker.io
-  repository: bitnami/apache
-  tag: latest # Overrides the broken chart default with the stable latest tag
+  registry: public.ecr.aws
+  repository: nginx/nginx
+  tag: alpine
 
 replicaCount: 1
 
@@ -10,6 +10,7 @@ service:
   type: ClusterIP
   port: 80
 
+# This matches the parameters inside the Bitnami deployment chart template
 resources:
   limits:
     cpu: 100m
