@@ -1,13 +1,8 @@
-# Use the official AWS ECR Mirror for Bitnami to bypass the Docker Hub corporate block
+# Using the standard Docker Official Image Mirror for Apache on AWS ECR Public
 image:
   registry: public.ecr.aws
-  repository: bitnami/apache
-  tag: 2.4.63-debian-12-r0  # Pinned to a verified, stable tag on AWS ECR
-
-# Required by Bitnami charts when you move away from DockerHub
-global:
-  security:
-    allowInsecureImages: true
+  repository: docker/library/httpd
+  tag: alpine
 
 replicaCount: 1
 
