@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dev-helm-apache
+  name: prod-helm-apache
   namespace: argocd
 spec:
   project: default
