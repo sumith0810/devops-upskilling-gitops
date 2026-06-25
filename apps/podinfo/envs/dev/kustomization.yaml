@@ -7,8 +7,9 @@ resources:
 namePrefix: dev-
 namespace: upskilling-helm-dev
 
-# Correct way to bind local values files to the inherited base chart in Kustomize
 helmCharts:
   - name: podinfo
-    releaseName: podinfo
+    repo: https://stefanprodan.github.io/podinfo
+    version: 6.7.0
+    releaseName: podinfo-dev
     valuesFile: values.yaml
