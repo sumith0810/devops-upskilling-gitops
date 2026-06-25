@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-apps-registry
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/sumith0810/devops-upskilling-gitops.git'
+    targetRevision: HEAD
+    path: argocd-apps # ◄── Tells this root app to monitor everything in this folder!
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: argocd # ◄── Must deploy to the argocd namespace where controllers live
+  syncPolicy:
+    automated:
+      prune: true     # ◄── If you delete a file from argocd-apps/, ArgoCD deletes the app
+      selfHeal: true
