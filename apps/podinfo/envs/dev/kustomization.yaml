@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - ../../base
+  - sealed-secret.yaml
 
 namePrefix: dev-
 namespace: upskilling-helm-dev
