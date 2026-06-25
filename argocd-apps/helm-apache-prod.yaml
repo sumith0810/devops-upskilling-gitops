@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/sumith0810/devops-upskilling-gitops.git'
     targetRevision: HEAD
-    path: apps/podinfo/envs/prod # Simply point to the Kustomize overlay folder
+    path: apps/podinfo/envs/prod # Pure Kustomize tracking path
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: upskilling-helm-prod
