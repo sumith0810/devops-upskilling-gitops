@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dev-helm-apache
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/sumith0810/devops-upskilling-gitops.git'
+    targetRevision: HEAD
+    path: apps/podinfo/envs/prod # Simply point to the Kustomize overlay folder
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: upskilling-helm-prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
