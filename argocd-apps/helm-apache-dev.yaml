@@ -6,26 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://stefanprodan.github.io/podinfo'
-    chart: podinfo
-    targetRevision: 6.7.0
-    helm:
-      # Injecting the values directly inline completely bypasses any Git caching bugs!
-      values: |
-        replicaCount: 1
-        ui:
-          color: "#34577c"
-          message: "Hello from DevOps Upskilling!"
-        service:
-          type: ClusterIP
-          nodePort: null
-        resources:
-          limits:
-            cpu: 100m
-            memory: 128Mi
-          requests:
-            cpu: 10m
-            memory: 32Mi
+    repoURL: 'https://github.com/sumith0810/devops-upskilling-gitops.git'
+    targetRevision: HEAD
+    path: apps/podinfo/envs/dev # Simply point to the Kustomize overlay folder
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: upskilling-helm-dev
