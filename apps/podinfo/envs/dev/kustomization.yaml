@@ -7,7 +7,8 @@ resources:
 namePrefix: dev-
 namespace: upskilling-helm-dev
 
-# Injects the values file directly into the inherited helm chart compilation
-helmGlobals:
-  valueFiles:
-    - values.yaml
+# Correct way to bind local values files to the inherited base chart in Kustomize
+helmCharts:
+  - name: podinfo
+    releaseName: podinfo
+    valuesFile: values.yaml
