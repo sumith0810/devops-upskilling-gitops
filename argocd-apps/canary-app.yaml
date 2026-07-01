@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dev-canary-sample
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/sumith0810/devops-upskilling-gitops.git'
+    targetRevision: HEAD
+    path: apps/canary-sample/envs/dev
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: upskilling-helm-dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
