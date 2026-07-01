@@ -1,0 +1,42 @@
+name: "CI: Build & Auto-Deploy to Dev"
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'apps/podinfo/src/**' # ◄── Only runs if application source files change
+
+permissions:
+  contents: write # ◄── Essential: Allows GitHub Actions to push tag updates back to your repo
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Simulate Application Build & Test
+        run: |
+          echo "Running unit tests..."
+          echo "Building Docker image tracking tag: dev-${{ github.sha }}"
+          echo "Mock build successful!"
+
+      - name: Update Kustomize/Helm Dev Overlay Image Tag
+        run: |
+          # Navigate to your dev overlay values file
+          cd apps/podinfo/envs/dev/
+          
+          # We'll simulate a change in a config or dynamically modify values.yaml
+          # Let's say we update an environment variable or tag version automatically
+          echo "# Last deployed by CI: dev-${{ github.sha }}" >> values.yaml
+
+      - name: Commit and Push Manifest Changes to GitOps Repo
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git add apps/podinfo/envs/dev/values.yaml
+          git commit -m "chore(ci): auto-update dev deployment image tag to dev-${{ github.sha }}"
+          git push origin main
