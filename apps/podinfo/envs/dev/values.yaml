@@ -10,4 +10,4 @@ resources:
     memory: 128Mi
   requests:
     cpu: 10m
-    memory: 32Mi
+    memory: 32Mi# Last deployed by CI: dev-5ee7d181b5a0f426994a850308fd7dd0021245e5
