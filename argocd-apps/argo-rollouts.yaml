@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://argoproj.github.io/argo-helm'
-    chart: argo-rollouts
-    targetRevision: 2.37.0
+    repoURL: 'https://github.com/argoproj/argo-rollouts.git'
+    path: manifests/cluster-install
+    targetRevision: v1.7.2 # Using the stable v1.7.2 tag natively
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: argo-rollouts
