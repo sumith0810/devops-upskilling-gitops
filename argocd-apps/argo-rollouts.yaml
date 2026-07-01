@@ -6,10 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/argoproj/argo-rollouts.git'
-    path: manifests/cluster-install
-    targetRevision: v1.7.2
-    cloneDepth: 1 # ◄── Forces a shallow clone (takes less than 1 second!)
+    repoURL: 'https://argoproj.github.io/argo-helm'
+    chart: argo-rollouts
+    targetRevision: 2.37.2 # ◄── Clean version with fixed label mapping selectors
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: argo-rollouts
