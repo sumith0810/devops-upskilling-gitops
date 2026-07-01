@@ -8,7 +8,8 @@ spec:
   source:
     repoURL: 'https://github.com/argoproj/argo-rollouts.git'
     path: manifests/cluster-install
-    targetRevision: v1.7.2 # Using the stable v1.7.2 tag natively
+    targetRevision: v1.7.2
+    cloneDepth: 1 # ◄── Forces a shallow clone (takes less than 1 second!)
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: argo-rollouts
