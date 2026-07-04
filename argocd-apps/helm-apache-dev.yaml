@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: dev-helm-apache
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/kustomize-build-options: --enable-helm
 spec:
   project: default
   source:
@@ -12,9 +14,18 @@ spec:
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: upskilling-helm-dev
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /spec/strategy/rollingUpdate/maxSurge
+        - /spec/template/spec/containers/0/resources
+      jqPathExpressions:
+        - .metadata.annotations["autopilot.gke.io/resource-adjustment"]
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+      - RespectIgnoreDifferences=true
