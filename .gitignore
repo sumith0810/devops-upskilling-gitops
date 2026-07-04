@@ -1,0 +1,11 @@
+# Binaries
+kubectl-argo-rollouts-*
+
+# Local secrets
+.env
+.env.*
+*.local.yaml
+*-credentials.yaml
+*secret*.yaml
+!**/sealed-secret.yaml
+!argocd-apps/sealed-secrets.yaml
