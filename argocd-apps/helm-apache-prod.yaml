@@ -17,11 +17,12 @@ spec:
   ignoreDifferences:
     - group: apps
       kind: Deployment
-      jqPathExpressions:
-        - .spec.strategy.rollingUpdate.maxSurge
+      jsonPointers:
+        - /spec/strategy/rollingUpdate/maxSurge
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+      - RespectIgnoreDifferences=true
