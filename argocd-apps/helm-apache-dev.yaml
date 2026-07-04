@@ -19,6 +19,9 @@ spec:
       kind: Deployment
       jsonPointers:
         - /spec/strategy/rollingUpdate/maxSurge
+        - /spec/template/spec/containers/0/resources
+      jqPathExpressions:
+        - .metadata.annotations["autopilot.gke.io/resource-adjustment"]
   syncPolicy:
     automated:
       prune: true
